@@ -8,11 +8,11 @@ import torch
 import get_real_shot_frames
 
 argument_parser = argparse.ArgumentParser() 
-argument_parser.add_argument("--video_path",default = r"", help="Please, write path to video dataset")
-argument_parser.add_argument("--yolo_hit_model_path",default = r"", help="Please, write path to folder where images will be saved.")
-argument_parser.add_argument("--yolo_ball_model_path",default =r"", help="Please, write path to folder where images will be saved.")
-argument_parser.add_argument("--video_output_path",default = r"", help="Please, write path to folder where images will be saved.")
-argument_parser.add_argument("--convexNeXt_path",default = r"", help="Please, write path to folder where images will be saved.")
+argument_parser.add_argument("--video_path",default = r"", help="Please, write path to the input video")
+argument_parser.add_argument("--yolo_hit_model_path",default = r"", help="Please, write path to yolo hit model weights")
+argument_parser.add_argument("--yolo_ball_model_path",default =r"", help="Please, write path to yolo ball model weights")
+argument_parser.add_argument("--video_output_path",default = r"", help="Please, write path to folder where the output video will be saved")
+argument_parser.add_argument("--convexNeXt_path",default = r"", help="Please, write path to the convNeXt model weights")
 argument_parser.add_argument("--video_name",default = r"", help="Please, what should by the name of the output video. Include .mp4")
 
 
@@ -81,9 +81,8 @@ def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNe
             
             readable, frame = video_capturer.read()
             
-            frame = cv2.resize(frame,(640,360))
-            
             if readable:
+                frame = cv2.resize(frame,(640,360))
                 current_ball_position = get_ball_position(frame,yolo_ball)
                       
                 shot.process_frame(frame,current_ball_position,yolo_hit_model)
@@ -105,7 +104,7 @@ def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNe
                 
                 path_frames.append(frame)
             
-            elif not readable or i < 1000:
+            else:
                 break
             
             i += 1
