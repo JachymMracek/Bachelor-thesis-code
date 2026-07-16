@@ -8,8 +8,8 @@ import cv2
 # https://medium.com/@mervegamzenar/spatial-data-analysis-shapely-fe72d65e63bf
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--dataset_path",default = r"D:\FOLDER_OF_FINAL_BACHELOR_THESIS\yolo_hit_ball_test",help="Please, write path to video dataset")
-argument_parser.add_argument("--model_weights_path",default = r"D:\FOLDER_OF_FINAL_BACHELOR_THESIS\hit_dataset\yolo_hit_ball\weights\best.pt", help="Please, write path to video dataset")
+argument_parser.add_argument("--dataset_path",default = r"",help="Please, write path to video dataset")
+argument_parser.add_argument("--model_weights_path",default = r"", help="Please, write path to video dataset")
 argument_parser.add_argument("--phase",default = "test", help="Please, write path to video dataset")
 
 # "C:\Users\jachy\MFF UK\hand_ball_dataset_split"
