@@ -59,7 +59,7 @@ def write_prection_to_frame(frame,ball_positions,convexNeXt_model):
     
     cv2.putText(frame,f"{shot_name}: {round(confidence,2)}", (width//2, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
 
-def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNeXt_classificator):
+def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNeXt_classificator,MAX_SIZE = 1000):
     
     video_capturer = cv2.VideoCapture(video_path)
     
@@ -76,7 +76,7 @@ def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNe
     
     i = 0
     
-    while True and i < 1000:
+    while True and i < MAX_SIZE:
             
             readable, frame = video_capturer.read()
             
@@ -109,7 +109,7 @@ def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNe
             i += 1
             print(i)
     
-    create_video(path_frames,video_output,"ahoj.mp4",fps)
+    create_video(path_frames,video_output,".mp4",fps)
     print(1)
 
 def main():
