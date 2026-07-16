@@ -59,3 +59,8 @@ utils.py – helper functions (video count, train/test split, ball coordinates).
 TrackNet V1 – unofficial PyTorch implementation: https://github.com/yastrebksv/TrackNet
 
 TrackNet V5 – official implementation: https://github.com/codelancera-offical/TrackNetV5-SDK
+
+## Libraries
+
+If one of the libraries is not installed on your computer, run pip install -r requirements.txt
+
