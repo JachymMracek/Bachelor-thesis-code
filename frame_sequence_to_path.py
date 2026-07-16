@@ -6,7 +6,7 @@ from ultralytics import YOLO
 import utils
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--root_test_shots_folder",default = r"", help="path were are frames")
+argument_parser.add_argument("--root_test_shots_folder",default = r"", help="Please, write path where are frames")
 argument_parser.add_argument("--output_folder",default = r"", help="Please, add path where the shot will be saved")
 argument_parser.add_argument("--yolo_ball_weights",default = r"", help="Please, write path to yolo ball weights")
 
