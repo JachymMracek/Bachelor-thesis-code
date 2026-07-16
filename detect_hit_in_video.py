@@ -15,7 +15,7 @@ class HumanPostureBall:
     def create_image(self,frame,current_ball_position,
                     HEIGHT = 360,WIDTH = 640,BLACK_PIXEL = [0,0,0],WHITE_PIXEL = [255,255,255]):
         
-        # https://docs.ultralytics.com/reference/engine/results/?utm_source=chatgpt.com#ultralytics.engine.results.Results
+        # https://docs.ultralytics.com/reference/engine/results/
         # https://stackoverflow.com/questions/10465747/how-to-create-a-white-image-in-python
         
         detections = self.yolo_pose_model(frame)
