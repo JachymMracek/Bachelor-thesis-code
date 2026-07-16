@@ -12,6 +12,8 @@ def main():
     video_dataset_path = args.video_dataset_path
     output_frames_path = args.output_frames_path
     
+    os.makedirs(output_frames_path, exist_ok=True)
+    
     count = 0
     
     for _,video_name in enumerate(os.listdir(video_dataset_path)):
@@ -29,7 +31,7 @@ def main():
                     frame_path = os.path.join(output_frames_path,f"{count}.jpg")
                     print(frame_path)
                     cv2.imwrite(frame_path,frame)
-
+                
                 else:
                     break
 
