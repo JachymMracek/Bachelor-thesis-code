@@ -6,8 +6,8 @@ import cv2
 # https://www.geeksforgeeks.org/python/python-draw-rectangular-shape-and-extract-objects-using-opencv/
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--image_path",default = r"",help="Please, write path to video dataset")
-argument_parser.add_argument("--yolo_weights",default = r"",help="Please, write path to video dataset")
+argument_parser.add_argument("--image_path",default = r"",help="Please, write path to image")
+argument_parser.add_argument("--yolo_weights",default = r"",help="Please, write path to yolo weights")
 
 def get_object_coordinates(yolo_model,frame):
     
