@@ -15,10 +15,10 @@ import utils
 
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--videos_path",default = r"C:\Users\jachy\Documents\ShareX\Screenshots\2026-05",help="Please, write path to video dataset")
-argument_parser.add_argument("--yolo_weights_path",default = r"C:\Users\jachy\MFF UK\final_bachelor_thesis\runs\detect\yolo_hand_ball_annotations\weights\best.pt",help="Please, write path of yolo squash ball detector")
-argument_parser.add_argument("--output_path",default = r"C:\Users\jachy\MFF UK\test_hit_folder",help="Please, write path where frames will be saved")
-argument_parser.add_argument("--phase",default ="test",help="Please, typed you phase. train or test")
+argument_parser.add_argument("--videos_path",default = r"",help="Please, write path to video dataset")
+argument_parser.add_argument("--yolo_weights_path",default = r"",help="Please, write path of yolo squash ball detector")
+argument_parser.add_argument("--output_path",default = r"",help="Please, write path where frames will be saved")
+argument_parser.add_argument("--phase",default ="",help="Please, typed you phase. train or test")
 
 
 """
