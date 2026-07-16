@@ -30,5 +30,8 @@ def main():
                     print(frame_path)
                     cv2.imwrite(frame_path,frame)
 
+                else:
+                    break
+
 if __name__ == "__main__":
     main()
