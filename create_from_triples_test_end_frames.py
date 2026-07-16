@@ -1,4 +1,5 @@
 import os 
+import shutil
 import cv2
 from annotatorMAKING import ImageData
 import argparse
@@ -28,7 +29,7 @@ def anotate_last_frame_triples(dataset_path,last_triple_frame_dataset_path,LAST_
     
     ImageData.iterate_images(folder_of_last_frame_triples,last_triple_frame_dataset_path)
     
-    os.rmdir(folder_of_triples) 
+    shutil.rmtree(folder_of_last_frame_triples)
     
 def main():
     args = argument_parser.parse_args()
