@@ -72,7 +72,7 @@ class Shot:
     
     def new_shot(self):
         self.frames_between_change_condition = 0
-        self.state = self.state.BEGGINING_SHOT
+        self.state = self.State.BEGGINING_SHOT
         
     def is_ball_hit(self,frame,yolo_hit_ball_model):
         
