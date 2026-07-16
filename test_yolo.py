@@ -12,13 +12,6 @@ argument_parser.add_argument("--dataset_path",default = r"",help="Please, write 
 argument_parser.add_argument("--model_weights_path",default = r"", help="Please, write path to video dataset")
 argument_parser.add_argument("--phase",default = "test", help="Please, write path to video dataset")
 
-# "C:\Users\jachy\MFF UK\hand_ball_dataset_split"
-# "C:\Users\jachy\MFF UK\frames_to_anotate
-#"D:\hit_dataset"
-
-"D:\FOLDER_OF_FINAL_BACHELOR_THESIS\yolo_hit_ball_test"
-# "C:\Users\jachy\MFF UK\final_bachelor_thesis\runs\detect\yolo_hand_ball_annotations\weights\best.pt"
-
 
 @dataclass
 class Metrics:
