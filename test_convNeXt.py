@@ -8,8 +8,8 @@ from sklearn.metrics import ConfusionMatrixDisplay, precision_score, recall_scor
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--folder_of_hit_images",default =r"",help="Please, write path to video dataset")
-argument_parser.add_argument("--convexnet_weights",default = r"",help="Please, write path to video dataset")
+argument_parser.add_argument("--folder_of_hit_images",default =r"",help="Please, write path to folder with shot images")
+argument_parser.add_argument("--convexnet_weights",default = r"",help="Please, write path to the convNeXt model weights")
 
 def eval_dataset(phase_dataloader,model):
     
@@ -42,10 +42,10 @@ def eval_dataset(phase_dataloader,model):
     classes_recall = recall_score(all_labels,all_predictions,average=None)
     classes_f1 = f1_score(all_labels,all_predictions,average=None)
     
-    print("precission for each class: " + f"{classes_precision}")
-    print("precission for each class: " + f"{classes_recall}")
+    print("precision for each class: " + f"{classes_precision}")
+    print("recall for each class: " + f"{classes_recall}")
     print("f1 for each class: " + f"{classes_f1}")
-    print("Dataset precission: " + f"{precission}" + " " " Dataset recall: " +  f"{recall}" + " Dataset f1: " + f"{f1}" + " Dataset accuracy: " + f"{accuracy}")
+    print("Dataset precision: " + f"{precission}" + " " " Dataset recall: " +  f"{recall}" + " Dataset f1: " + f"{f1}" + " Dataset accuracy: " + f"{accuracy}")
 
 def main(TRANFORMATOR = transforms.Compose([transforms.Resize(224),transforms.CenterCrop((224, 224)),transforms.ToTensor(),transforms.Normalize(mean=[0.485, 0.456, 0.406],std=[0.229, 0.224, 0.225])]),BATCH_SIZE = 8,NUM_WORKERS = 8):
     
