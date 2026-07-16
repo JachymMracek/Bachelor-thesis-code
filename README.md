@@ -12,8 +12,6 @@ get_data_by_yolo.py – automatically creates a YOLO dataset, frames are annotat
 
 annotatorMAKING.py – manual annotation tool, bounding boxes are created by clicking on the image and saved in YOLO format.
 
-help_methods.py – helper methods for the manual annotation tool (mouse click handling on the image).
-
 create_TrackNet_labels.py – creates a dataset in TrackNet format (game/Clip folders + Label.csv) using YOLO ball detection.
 
 create_trackNet_test_video.py – creates short test videos for TrackNet from frame triples.
