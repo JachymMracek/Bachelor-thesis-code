@@ -6,7 +6,7 @@ import cv2
 
 argument_parser = argparse.ArgumentParser()
 argument_parser.add_argument("--dataset_path",default = r"",help="Please, write path to hand anotated last frames")
-argument_parser.add_argument("--videos_path",default = r"",help="Please, write path were are videos of size three")
+argument_parser.add_argument("--videos_path",default = r"",help="Please, write path where are videos of size three")
 
 
 @dataclass
@@ -79,19 +79,27 @@ def create(dataset_frame_path,trackNet_test_folder_videos):
         
         height,width,_ = frame.shape
         
-        last_frame_ball_position = None if ball_positions[i] is None else (int(ball_positions[i][0]*width/512),int(ball_positions[i][1]*height/288))
+        last_frame_ball_position = None if i >= len(ball_positions) or ball_positions[i] is None else (int(ball_positions[i][0]*width/512),int(ball_positions[i][1]*height/288))
 
         hand_label = get_label_corners(dataset_frame_path,frame_name,height,width)
         
         test_videos(last_frame_ball_position,hand_label,metrics)
         
-    precission = metrics.TP / (metrics.FP + metrics.TP)
+    print(metrics)
+    
+    if metrics.TP + metrics.FP == 0 or metrics.TP + metrics.FN == 0:
+        print("Cannot compute precision/recall, no positive predictions or no positive labels.")
+        return
+    
+    precision = metrics.TP / (metrics.FP + metrics.TP)
     recall = metrics.TP / (metrics.FN + metrics.TP)
     
-    print(metrics)
-    print("precission", precission)
+    print("precision", precision)
     print("recall",recall)
-    print("f1",2*precission*recall / (precission + recall))
+    
+    if precision + recall != 0:
+        print("f1",2*precision*recall / (precision + recall))
+    
     print("accuracy:",(metrics.TP + metrics.TN) / (metrics.TP + metrics.TN + metrics.FP + metrics.FN))
 
 def main():
