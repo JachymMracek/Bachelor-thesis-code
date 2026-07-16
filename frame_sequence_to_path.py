@@ -31,7 +31,7 @@ def create_testing_videos(root_test_shots_folder,output_folder,yolo_ball_dataset
         shot_type_draw_path = os.path.join(output_folder,shot_type_folder_name)
         
         
-        os.makedirs(shot_type_draw_path)
+        os.makedirs(shot_type_draw_path,exist_ok=True)
         shot_index = 0
         
         for folder_shot_frames in os.listdir(shot_type_frames_path):
@@ -42,7 +42,7 @@ def create_testing_videos(root_test_shots_folder,output_folder,yolo_ball_dataset
             for frame_name in os.listdir(folder_frames_video):
                 frame_path = os.path.join(folder_frames_video,frame_name)
                 frame = cv2.imread(frame_path)
-                ball_coordinates = utils.get_ball_position(yolo_model,frame)
+                ball_coordinates = utils.get_ball_coordinates(yolo_model,frame)
                 print(ball_coordinates)
                 
                 if ball_coordinates is not None:
@@ -62,7 +62,7 @@ def main():
     output_folder = args.output_folder
     yolo_ball_weights = args.yolo_ball_weights
     
-    os.makedirs(output_folder)
+    os.makedirs(output_folder,exist_ok=True)
     
     create_testing_videos(root_test_shots_folder,output_folder,yolo_ball_weights)
 
