@@ -26,7 +26,7 @@ def anotate_last_frame_triples(dataset_path,last_triple_frame_dataset_path,LAST_
             
             cv2.imwrite(frame_path_to_save,last_frame)
     
-    ImageData.iterate_images(folder_of_last_frame_triples,last_triple_frame_dataset_path) # Dopln mode annotator, pak není hezký 
+    ImageData.iterate_images(folder_of_last_frame_triples,last_triple_frame_dataset_path)
     
     os.rmdir(folder_of_triples) 
     
