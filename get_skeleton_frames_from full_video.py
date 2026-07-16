@@ -18,7 +18,7 @@ argument_parser = argparse.ArgumentParser()
 argument_parser.add_argument("--videos_path",default = r"",help="Please, write path to video dataset")
 argument_parser.add_argument("--yolo_weights_path",default = r"",help="Please, write path of yolo squash ball detector")
 argument_parser.add_argument("--output_path",default = r"",help="Please, write path where frames will be saved")
-argument_parser.add_argument("--phase",default ="",help="Please, typed you phase. train or test")
+argument_parser.add_argument("--phase",default =r"",help="Please, typed you phase. train or test")
 
 
 """
@@ -33,6 +33,8 @@ argument_parser.add_argument("--phase",default ="",help="Please, typed you phase
 def frames_video(video_path,yolo_model,output_path,video_index):
     
     video_capturer = cv2.VideoCapture(video_path)
+    
+    print(1)
 
     frame_index = 0
     
@@ -65,13 +67,15 @@ def frames_video(video_path,yolo_model,output_path,video_index):
 
 def iterate_videos(videos_path,yolo_model,phase,output_path):
     
+    
     count_of_videos = utils.get_number_of_videos(videos_path)
+    print(count_of_videos)
     
     for video_index,video_name in enumerate(os.listdir(videos_path)):
         video_path = os.path.join(videos_path,video_name)
         
-        if utils.is_video_for_phase(video_index,count_of_videos,phase):
-            frames_video(video_path,yolo_model,output_path,video_index)
+        
+        frames_video(video_path,yolo_model,output_path,video_index)
 
 def main():
     
@@ -83,7 +87,7 @@ def main():
     
     yolo_model = YOLO(yolo_weights_path)
     
-    os.makedirs(output_path)
+    os.makedirs(output_path,exist_ok=True)
     
     iterate_videos(videos_path,yolo_model,phase,output_path)
 
