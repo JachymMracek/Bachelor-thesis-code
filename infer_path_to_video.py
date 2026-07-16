@@ -13,6 +13,7 @@ argument_parser.add_argument("--yolo_hit_model_path",default = r"", help="Please
 argument_parser.add_argument("--yolo_ball_model_path",default =r"", help="Please, write path to folder where images will be saved.")
 argument_parser.add_argument("--video_output_path",default = r"", help="Please, write path to folder where images will be saved.")
 argument_parser.add_argument("--convexNeXt_path",default = r"", help="Please, write path to folder where images will be saved.")
+argument_parser.add_argument("--video_name",default = r"", help="Please, what should by the name of the output video. Include .mp4")
 
 
 def get_ball_position(frame,yolo_model):
@@ -49,7 +50,7 @@ def write_prection_to_frame(frame,ball_positions,convexNeXt_model):
     
     height,width, _ = frame.shape
     
-    path_shot_frame = get_real_shot_data.draw_shot_image(ball_positions)
+    path_shot_frame = get_real_shot_frames.draw_shot_image(ball_positions)
     
     class_predicted, confidence = convexnet_prediction.convexnet_prediction(path_shot_frame,convexNeXt_model)
     
@@ -59,7 +60,7 @@ def write_prection_to_frame(frame,ball_positions,convexNeXt_model):
     
     cv2.putText(frame,f"{shot_name}: {round(confidence,2)}", (width//2, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
 
-def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNeXt_classificator,MAX_SIZE = 1000):
+def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNeXt_classificator,video_name):
     
     video_capturer = cv2.VideoCapture(video_path)
     
@@ -76,12 +77,13 @@ def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNe
     
     i = 0
     
-    while True and i < MAX_SIZE:
+    while True and i < 1000:
             
             readable, frame = video_capturer.read()
             
+            frame = cv2.resize(frame,(640,360))
+            
             if readable:
-                frame = cv2.resize(frame,(640,360))
                 current_ball_position = get_ball_position(frame,yolo_ball)
                       
                 shot.process_frame(frame,current_ball_position,yolo_hit_model)
@@ -103,14 +105,12 @@ def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNe
                 
                 path_frames.append(frame)
             
-            else:
+            elif not readable or i < 1000:
                 break
             
             i += 1
-            print(i)
     
-    create_video(path_frames,video_output,".mp4",fps)
-    print(1)
+    create_video(path_frames,video_output,video_name,fps)
 
 def main():
     args = argument_parser.parse_args()
@@ -120,12 +120,13 @@ def main():
     yolo_ball_model_path = args.yolo_ball_model_path
     video_output_path = args.video_output_path
     convexNeXt_path = args.convexNeXt_path
+    video_name = args.video_name
     
     yolo_hit_model = YOLO(yolo_hit_model_path)
     yolo_ball_model = YOLO(yolo_ball_model_path)
     convexNeXt_classificator = torch.load(convexNeXt_path,weights_only = False)
     
-    draw_path_to_video(video_path,yolo_hit_model,yolo_ball_model,video_output_path,convexNeXt_classificator)
+    draw_path_to_video(video_path,yolo_hit_model,yolo_ball_model,video_output_path,convexNeXt_classificator,video_name)
 
 if __name__ == "__main__":
     main()
