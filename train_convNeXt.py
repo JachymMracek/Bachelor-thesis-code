@@ -38,7 +38,7 @@ torch.cuda.manual_seed_all(SEED)
 class Classificator:
     
     """
-    In this class ConvexNeXt is trained
+    In this class ConvNeXt is trained
     """
     
     # enum for phases. 
@@ -112,7 +112,7 @@ class Classificator:
     Arguments:
         phase_dataloader (torch.utils.data.DataLoader): dataloader where are phase data used
         optimizer (torch.optim.Optimizer): optimizer of the evalution
-        phase_idx (int): index of tha phase. train has 1 and val has 2
+        phase_idx (int): index of the phase. train has 0 and val has 1
         model (torchvision.models): models which is used for evaluation
         criterion (torch.nn.Module): criterion of the evalution.
         
