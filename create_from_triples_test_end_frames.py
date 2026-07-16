@@ -4,8 +4,8 @@ from annotatorMAKING import ImageData
 import argparse
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--dataset_of_triples_path",default = r"D:\FOLDER_OF_FINAL_BACHELOR_THESIS\test_triple_ball_dataset",help="Please, write path to video dataset")
-argument_parser.add_argument("--last_triple_frame_dataset_path",default = r"D:\FOLDER_OF_FINAL_BACHELOR_THESIS\test_single_ball_frames", help="Please, write path to video dataset")
+argument_parser.add_argument("--dataset_of_triples_path",default = r"",help="Please, write path to video dataset")
+argument_parser.add_argument("--last_triple_frame_dataset_path",default = r"D", help="Please, write path to video dataset")
 
 def anotate_last_frame_triples(dataset_path,last_triple_frame_dataset_path,LAST_FRAME_FROM_TRIPLE_FOLDER_NAME = "last_triple_frames"):
 
