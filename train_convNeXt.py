@@ -24,7 +24,7 @@ import utils
 # https://apxml.com/courses/getting-started-with-pytorch/chapter-5-efficient-data-handling/data-transformations-torchvision-transforms
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--root_image_folder",default=r"C:\Users\jachy\MFF UK\balanced_dataset",
+argument_parser.add_argument("--root_image_folder",default=r"",
                              help = "root folder path to folder for classification where are splited train/val/test frames")
         
 INPUT_SIZE = 224
