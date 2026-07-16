@@ -39,7 +39,7 @@ class AutomativeFrameCollector(VideoReader):
     creates dataset and nested folders where images and labels will be stored
 
     Arguments:
-        path_dataset_output (numpy.ndarray): potencial frame in the dataset
+        path_dataset_output (string): output path where the dataset will be created
     
     """    
     
@@ -152,10 +152,12 @@ def create_dataset_for_yolo_automative_annotations(path_to_videos_string,path_fr
     
     count_videos = utils.get_number_of_videos(path_to_videos_string)
     
-    for video_id,video_path in enumerate(os.listdir(path_to_videos_string)):
+    for video_id,video_name in enumerate(os.listdir(path_to_videos_string)):
         
         if video_id >= int(count_videos*TEST_QUOTIENT_BEFORE):
             break
+        
+        video_path = os.path.join(path_to_videos_string,video_name)
         
         automative_frame_collector = AutomativeFrameCollector(video_path,video_id,count_videos,path_frames_output,yolo_model)
         
