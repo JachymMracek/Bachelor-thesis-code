@@ -23,7 +23,7 @@ def create_video(triple_frames,video_output_folder,video_name):
     video.release()
 
 """
-Collect data which will be then annotate it by hand
+Creates videos of three frames from the folder of triple frames
 """
 
 def iterate_folder(folder_with_frames,video_output_folder,TRIPLE = 3,VIDEO_FRAMES = 63,VIDEO_TEST_INDEX = 180):
