@@ -8,9 +8,9 @@ import cv2
 # https://medium.com/@mervegamzenar/spatial-data-analysis-shapely-fe72d65e63bf
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--dataset_path",default = r"",help="Please, write path to video dataset")
-argument_parser.add_argument("--model_weights_path",default = r"", help="Please, write path to video dataset")
-argument_parser.add_argument("--phase",default = "test", help="Please, write path to video dataset")
+argument_parser.add_argument("--dataset_path",default = r"",help="Please, write path to dataset with images and labels")
+argument_parser.add_argument("--model_weights_path",default = r"", help="Please, write path to yolo weights")
+argument_parser.add_argument("--phase",default = "test", help="Please, write phase of the dataset. train/val/test")
 
 
 @dataclass
@@ -51,7 +51,8 @@ def change_yolo_metrics(yolo_bounding_box_prediction,label_bounding_box,metrics)
         return
     
     yolo_shapely_box = box(yolo_bounding_box_prediction[0],yolo_bounding_box_prediction[1],yolo_bounding_box_prediction[2],yolo_bounding_box_prediction[3])
-    label_bounding_box = box(label_bounding_box[0],label_bounding_box[1],label_bounding_box[2],label_bounding_box[3])
+    x_center,y_center,width,height = label_bounding_box
+    label_bounding_box = box(x_center - width / 2,y_center - height / 2,x_center + width / 2,y_center + height / 2)
     
     if yolo_shapely_box.intersects(label_bounding_box):
         metrics.TP += 1
@@ -64,7 +65,7 @@ def change_yolo_metrics(yolo_bounding_box_prediction,label_bounding_box,metrics)
 def read_box_label(label_file_name):
     
     with open(label_file_name,"r") as label_file:
-        bounding_box_coordinates = label_file.readline().split(" ")[1:]
+        bounding_box_coordinates = [float(coordinate) for coordinate in label_file.readline().split(" ")[1:]]
         
     return bounding_box_coordinates
 
@@ -89,12 +90,12 @@ def read_testing_data(dataset_with_hand_test_images,metrics,yolo_weights_path,ph
         
         change_yolo_metrics(yolo_boudning_box_prediction,corners_label_box,metrics)
     
-    precission = metrics.TP / (metrics.FP + metrics.TP)
+    precision = metrics.TP / (metrics.FP + metrics.TP)
     recall = metrics.TP / (metrics.FN + metrics.TP)
     
-    print("precission",precission)
+    print("precision",precision)
     print("recall",recall)
-    print("f1",2*precission*recall / (precission + recall))
+    print("f1",2*precision*recall / (precision + recall))
     print("accuracy",(metrics.TP + metrics.TN) / (metrics.TP + metrics.TN + metrics.FP + metrics.FN))
         
         
