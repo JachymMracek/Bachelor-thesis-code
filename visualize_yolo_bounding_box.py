@@ -23,7 +23,6 @@ def get_object_coordinates(yolo_model,frame):
 def visualize_bounding_box(yolo_model,image_path):
     image = cv2.imread(image_path)
     image = cv2.resize(image,(640,360))
-    yolo_model = YOLO(yolo_model)
     
     ball_coordinates = get_object_coordinates(yolo_model,image)
     
