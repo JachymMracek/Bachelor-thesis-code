@@ -5,7 +5,7 @@ from ultralytics import YOLO
 import os
 import convexnet_prediction
 import torch
-import get_real_shot_data
+import get_real_shot_frames
 
 argument_parser = argparse.ArgumentParser() 
 argument_parser.add_argument("--video_path",default = r"", help="Please, write path to video dataset")
