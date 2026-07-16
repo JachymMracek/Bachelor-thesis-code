@@ -1,7 +1,7 @@
 import os 
 import shutil
 import cv2
-from annotatorMAKING import ImageData
+from annotator import ImageData
 import argparse
 
 argument_parser = argparse.ArgumentParser()
