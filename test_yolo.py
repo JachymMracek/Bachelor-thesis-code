@@ -46,7 +46,7 @@ def yolo_prediction(frame,yolo_model,NOT_FINDED = ()):
 def change_yolo_metrics(yolo_bounding_box_prediction,label_bounding_box,metrics):
     
     if len(yolo_bounding_box_prediction) != 0 and len(label_bounding_box) == 0:
-        metrics.FP = 1
+        metrics.FP += 1
         return
     
     if len(yolo_bounding_box_prediction) == 0 and len(label_bounding_box) == 0:
@@ -64,7 +64,7 @@ def change_yolo_metrics(yolo_bounding_box_prediction,label_bounding_box,metrics)
         metrics.TP += 1
     
     else:
-        metrics.FP = 1
+        metrics.FP += 1
     
     return yolo_shapely_box.intersects(label_bounding_box)
     
