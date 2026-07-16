@@ -5,8 +5,8 @@ from dataclasses import dataclass
 import cv2
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--dataset_path",default = r"D:\FOLDER_OF_FINAL_BACHELOR_THESIS\test_single_ball_frames",help="Please, write path to hand anotated last frames")
-argument_parser.add_argument("--videos_path",default = r"D:\FOLDER_OF_FINAL_BACHELOR_THESIS\test_trackNet_videos",help="Please, write path were are videos of size three")
+argument_parser.add_argument("--dataset_path",default = r"",help="Please, write path to hand anotated last frames")
+argument_parser.add_argument("--videos_path",default = r"",help="Please, write path were are videos of size three")
 
 
 @dataclass
