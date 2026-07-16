@@ -117,7 +117,7 @@ class HandFrameCollector(VideoReader):
         elif mode == TRACKNET_MODE:
             self.mode = self.TrackNetMode()
     
-    # Frame is accepted when distance beween previous one is responsible so the model does not conains in dataset same frames
+    # Frame is accepted when distance between previous one is responsible so the model does not contain in dataset same frames
     @override
     def is_frame_acceptable(self,frame,MUST_DISTANCE_BETWEEN_FRAMES = 200,TRACKNET_NUMBER_FRAMES = 3):
         
@@ -141,7 +141,7 @@ class HandFrameCollector(VideoReader):
 Creates dataset which will consists images for yolo hand annotations
 
 Arguments:
-    path_to_videos_string (string) : path where squash videos are located
+    video_folder_path (string) : path where squash videos are located
     path_frames_output (string) :  path where images will be located
     mode (string): choose which type of data are taken. Single frames or triples
     phase (string): describes from which videos frames must be collect it. Depends test or not test phase
@@ -177,7 +177,7 @@ def main():
     mode = args.model_type
     phase = args.phase
     
-    os.makedirs(args.path_frames_output)
+    os.makedirs(args.path_frames_output,exist_ok=True)
     
     create_dataset_for_yolo_hand_annotations(args.path_videos_input,args.path_frames_output,mode,phase)
 
