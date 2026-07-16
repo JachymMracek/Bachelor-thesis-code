@@ -80,9 +80,8 @@ def draw_path_to_video(video_path,yolo_hit_model,yolo_ball,video_output,convexNe
             
             readable, frame = video_capturer.read()
             
-            frame = cv2.resize(frame,(640,360))
-            
             if readable:
+                frame = cv2.resize(frame,(640,360))
                 current_ball_position = get_ball_position(frame,yolo_ball)
                       
                 shot.process_frame(frame,current_ball_position,yolo_hit_model)
