@@ -58,6 +58,9 @@ TrackNet V1 – unofficial PyTorch implementation: https://github.com/yastrebksv
 
 TrackNet V5 – official implementation: https://github.com/codelancera-offical/TrackNetV5-SDK
 
+External projects were modified for my purposes, such as splitting the dataset correctly, getting ball positions, and training the models. However, they are external projects and need to be cloned separately. 
+I am not the author of these external projects, which is why I do not include their code in the attachments. For the same reason, I do not include the YouTube images or the models trained on them, as this could raise copyright issues.
+
 ## Libraries
 
 If one of the libraries is not installed on your computer, run pip install -r requirements.txt
