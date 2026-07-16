@@ -57,6 +57,8 @@ def save_img(shot_frame,convex_net_shot_classificator,output_dataset,frame_name)
 
     class_predicted = preds.tolist()[0]
     
+    os.makedirs(os.path.join(output_dataset,f"{class_predicted}"),exist_ok=True)
+    
     dataset_path = os.path.join(output_dataset,f"{class_predicted}",frame_name)
     cv2.imwrite(dataset_path,shot_frame)
 
