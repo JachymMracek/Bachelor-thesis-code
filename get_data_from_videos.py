@@ -23,8 +23,8 @@ import utils
 ################################################################################
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--path_videos_input",default = r"C:\Users\jachy\Documents\ShareX\Screenshots\2026-05", help="Please, write path to videos dataset")
-argument_parser.add_argument("--path_frames_output",default = r"C:\Users\jachy\MFF UK\dataset", help="Please, write path to folder where images will be saved.")
+argument_parser.add_argument("--path_videos_input",default = r"", help="Please, write path to videos dataset")
+argument_parser.add_argument("--path_frames_output",default = r"", help="Please, write path to folder where images will be saved.")
 argument_parser.add_argument("--model_type",default = r"yolo", help="Choose between tracknet triple or yolo single images collector. Modes are trackNet/yolo")
 argument_parser.add_argument("--phase",default = r"train", help="User can choose two options test/train. This parameter decide from which videos are data collect it")
 
