@@ -8,11 +8,11 @@ import torch
 import get_real_shot_data
 
 argument_parser = argparse.ArgumentParser() 
-argument_parser.add_argument("--video_path",default = r"C:\Users\jachy\Documents\ShareX\Screenshots\2026-05\msedge_xTgZqgEI4i.mp4", help="Please, write path to video dataset")
-argument_parser.add_argument("--yolo_hit_model_path",default = r"D:\FOLDER_OF_FINAL_BACHELOR_THESIS\hit_dataset\yolo_hit_ball\weights\best.pt", help="Please, write path to folder where images will be saved.")
-argument_parser.add_argument("--yolo_ball_model_path",default =r"D:\FOLDER_OF_FINAL_BACHELOR_THESIS\yolo_ball_dataset\yolo_squash_ball_trained\weights\best.pt", help="Please, write path to folder where images will be saved.")
-argument_parser.add_argument("--video_output_path",default = r"C:\Users\jachy\MFF UK", help="Please, write path to folder where images will be saved.")
-argument_parser.add_argument("--convexNeXt_path",default = r"C:\Users\jachy\MFF UK\final_bachelor_thesis\synthetic_shot_model.pth", help="Please, write path to folder where images will be saved.")
+argument_parser.add_argument("--video_path",default = r"", help="Please, write path to video dataset")
+argument_parser.add_argument("--yolo_hit_model_path",default = r"", help="Please, write path to folder where images will be saved.")
+argument_parser.add_argument("--yolo_ball_model_path",default =r"", help="Please, write path to folder where images will be saved.")
+argument_parser.add_argument("--video_output_path",default = r"", help="Please, write path to folder where images will be saved.")
+argument_parser.add_argument("--convexNeXt_path",default = r"", help="Please, write path to folder where images will be saved.")
 
 
 def get_ball_position(frame,yolo_model):
