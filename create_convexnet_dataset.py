@@ -18,7 +18,7 @@ argument_parser.add_argument("--convexnext_dataset_path",default = r"",help="Ple
 
 
 """
-    Converts YOLO file to ConvexNeXt dataset
+    Returns source frame path in YOLO dataset and target frame path in ConvNeXt dataset
         
     Arguments:
         file_tag (string): tag is name of the image before postfix.
@@ -35,7 +35,7 @@ def get_frame_path_and_taret_path(file_tag,yolo_dataset_path,convexnet_dataset_p
 
 
 """
-    Converts YOLO file to ConvexNeXt dataset
+    Converts YOLO dataset to ConvNeXt dataset
         
     Arguments:
         yolo_dataset_path (string): path to the YOLO dataset
@@ -80,7 +80,7 @@ def convert_yolo_dataset_to_convexnet(yolo_dataset_path,convexnet_dataset_path,L
 def main():
     args = argument_parser.parse_args()
 
-    yolo_dataset_path = args. yolo_dataset_path
+    yolo_dataset_path = args.yolo_dataset_path
     convexnext_dataset_path = args.convexnet_dataset_path
     
     convert_yolo_dataset_to_convexnet(yolo_dataset_path,convexnext_dataset_path)
