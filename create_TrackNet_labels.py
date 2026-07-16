@@ -122,7 +122,7 @@ class TrackNetImgsLabels:
         
         for i,video_name in enumerate(os.listdir(VIDEO_PATHS)):
             
-            number_of_videos = utils.get_number_of_videos()
+            number_of_videos = utils.get_number_of_videos(VIDEO_PATHS)
             
             if i >= number_of_videos:
                 continue 
