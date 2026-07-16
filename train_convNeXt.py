@@ -168,7 +168,7 @@ class Classificator:
             TRAIN_LOSS_TITLE = "train loss",
             VAL_ACCURACY_TITLE = "val accuracy",
             TRAIN_ACCURACY_TITLE = "train accuracy",
-            MODEL_NAME = "synthetic_shot_model.pth"):
+            MODEL_NAME = "all_real.pth"):
         
         best_model_weights = None
         best_accuracy_model = float("-inf")

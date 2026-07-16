@@ -8,8 +8,8 @@ from sklearn.metrics import ConfusionMatrixDisplay, precision_score, recall_scor
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("--folder_of_hit_images",default =r"C:\Users\jachy\MFF UK\balanced_dataset/val",help="Please, write path to video dataset")
-argument_parser.add_argument("--convexnet_weights",default = r"C:\Users\jachy\MFF UK\final_bachelor_thesis\synthetic_5000.pth",help="Please, write path to video dataset")
+argument_parser.add_argument("--folder_of_hit_images",default =r"C:\Users\jachy\MFF UK\balanced_dataset\val",help="Please, write path to video dataset")
+argument_parser.add_argument("--convexnet_weights",default = r"D:\FOLDER_OF_FINAL_BACHELOR_THESIS\scripts\help_files\all_real.pth",help="Please, write path to video dataset")
 
 def eval_dataset(phase_dataloader,model):
     
