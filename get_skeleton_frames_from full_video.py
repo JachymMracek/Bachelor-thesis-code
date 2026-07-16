@@ -33,8 +33,6 @@ argument_parser.add_argument("--phase",default =r"",help="Please, typed you phas
 def frames_video(video_path,yolo_model,output_path,video_index):
     
     video_capturer = cv2.VideoCapture(video_path)
-    
-    print(1)
 
     frame_index = 0
     
@@ -67,15 +65,13 @@ def frames_video(video_path,yolo_model,output_path,video_index):
 
 def iterate_videos(videos_path,yolo_model,phase,output_path):
     
-    
     count_of_videos = utils.get_number_of_videos(videos_path)
-    print(count_of_videos)
     
     for video_index,video_name in enumerate(os.listdir(videos_path)):
         video_path = os.path.join(videos_path,video_name)
         
-        
-        frames_video(video_path,yolo_model,output_path,video_index)
+        if utils.is_video_for_phase(video_index,count_of_videos,phase):
+            frames_video(video_path,yolo_model,output_path,video_index)
 
 def main():
     
